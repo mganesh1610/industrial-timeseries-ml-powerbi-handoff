@@ -1,0 +1,4 @@
+variant_type,total_units,total_failures,failure_rate_pct,avg_power_w,avg_overstrain_index,avg_temp_diff_k
+H,1003,21,2.09,6263.57,4280.86,10.06
+L,6000,235,3.92,6282.75,4341.48,10.0
+M,2997,83,2.77,6279.14,4272.3,9.99

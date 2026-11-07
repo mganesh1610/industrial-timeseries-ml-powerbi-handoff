@@ -1,0 +1,110 @@
+{
+  "handoff_version": "1.0.0",
+  "stakeholder_discovery_workflows_mapped": 6,
+  "verified_datasets_total_rows": 29735,
+  "machine_telemetry_rows": 10000,
+  "timeseries_sensor_rows": 19735,
+  "predictive_maintenance_evaluation": {
+    "logistic_roc_auc": 0.9905,
+    "deep_mlp_roc_auc": 0.9957,
+    "ensemble_roc_auc": 0.996,
+    "ensemble_pr_auc": 0.9452,
+    "best_f1": 0.9323,
+    "best_precision": 0.9538,
+    "best_recall": 0.9118,
+    "brier_score": 0.0197
+  },
+  "welch_t_stat_overstrain": 12.84,
+  "walk_forward_timeseries_evaluation": {
+    "raw_10min_intervals": 19735,
+    "hourly_windows_total": 3289,
+    "walk_forward_oos_predictions": 1633,
+    "walk_forward_folds": 5,
+    "model_mape_pct": 3.44,
+    "naive_baseline_mape_pct": 5.97,
+    "forecast_error_reduction_pct": 42.32,
+    "model_rmse": 8.5855,
+    "naive_rmse": 14.5798,
+    "rmse_reduction_pct": 41.11,
+    "model_mae": 5.1284,
+    "oos_r2": 0.6891,
+    "fold_breakdown": [
+      {
+        "fold": 1,
+        "train_rows": 1632,
+        "test_rows": 326,
+        "model_mape_pct": 3.225,
+        "naive_mape_pct": 5.838,
+        "model_rmse": 7.2157
+      },
+      {
+        "fold": 2,
+        "train_rows": 1958,
+        "test_rows": 326,
+        "model_mape_pct": 3.978,
+        "naive_mape_pct": 7.343,
+        "model_rmse": 10.4133
+      },
+      {
+        "fold": 3,
+        "train_rows": 2284,
+        "test_rows": 326,
+        "model_mape_pct": 3.698,
+        "naive_mape_pct": 5.882,
+        "model_rmse": 8.8792
+      },
+      {
+        "fold": 4,
+        "train_rows": 2610,
+        "test_rows": 326,
+        "model_mape_pct": 3.108,
+        "naive_mape_pct": 4.682,
+        "model_rmse": 7.6902
+      },
+      {
+        "fold": 5,
+        "train_rows": 2936,
+        "test_rows": 329,
+        "model_mape_pct": 3.212,
+        "naive_mape_pct": 6.106,
+        "model_rmse": 8.373
+      }
+    ]
+  },
+  "variant_kpi_breakdown": [
+    {
+      "variant_type": "H",
+      "total_units": 1003,
+      "total_failures": 21,
+      "failure_rate_pct": 2.09,
+      "avg_power_w": 6263.57,
+      "avg_overstrain_index": 4280.86,
+      "avg_temp_diff_k": 10.06
+    },
+    {
+      "variant_type": "L",
+      "total_units": 6000,
+      "total_failures": 235,
+      "failure_rate_pct": 3.92,
+      "avg_power_w": 6282.75,
+      "avg_overstrain_index": 4341.48,
+      "avg_temp_diff_k": 10.0
+    },
+    {
+      "variant_type": "M",
+      "total_units": 2997,
+      "total_failures": 83,
+      "failure_rate_pct": 2.77,
+      "avg_power_w": 6279.14,
+      "avg_overstrain_index": 4272.3,
+      "avg_temp_diff_k": 9.99
+    }
+  ],
+  "data_quality_gates_passed": "12/12 (100.0%)",
+  "llm_grounding_verification": {
+    "total_claims_checked": 10,
+    "verified_claims": 10,
+    "hallucination_rate_pct": 0.0,
+    "schema_compliance_pct": 100.0
+  }
+}

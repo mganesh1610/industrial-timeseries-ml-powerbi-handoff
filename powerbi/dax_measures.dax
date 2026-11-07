@@ -1,0 +1,42 @@
+// =============================================================================
+// Power BI Semantic Model — Governed DAX Measures for Stakeholder Handoff
+// =============================================================================
+
+Total Monitored Units = COUNTROWS('fct_machine_predictions')
+
+Observed Failure Rate % =
+DIVIDE(
+    CALCULATE(COUNTROWS('fct_machine_predictions'), 'fct_machine_predictions'[actual_failure] = 1),
+    [Total Monitored Units],
+    0
+) * 100
+
+High-Risk Alert Units =
+CALCULATE(
+    COUNTROWS('fct_machine_predictions'),
+    'fct_machine_predictions'[predicted_risk_score] >= 0.50
+)
+
+Walk-Forward Forecast MAPE % =
+AVERAGEX(
+    'fct_timeseries_forecasts',
+    DIVIDE(
+        ABS('fct_timeseries_forecasts'[actual_thermal_load] - 'fct_timeseries_forecasts'[forecast_thermal_load]),
+        'fct_timeseries_forecasts'[actual_thermal_load],
+        0
+    )
+) * 100
+
+Forecast Error Reduction vs Naive % =
+VAR ModelMAPE = [Walk-Forward Forecast MAPE %]
+VAR NaiveMAPE =
+    AVERAGEX(
+        'fct_timeseries_forecasts',
+        DIVIDE(
+            ABS('fct_timeseries_forecasts'[actual_thermal_load] - 'fct_timeseries_forecasts'[naive_baseline_load]),
+            'fct_timeseries_forecasts'[actual_thermal_load],
+            0
+        )
+    ) * 100
+RETURN
+    DIVIDE(NaiveMAPE - ModelMAPE, NaiveMAPE, 0) * 100
